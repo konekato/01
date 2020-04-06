@@ -1,4 +1,6 @@
-# 一つの数字で暗号作成
+# number.py -> 数字の羅列平文を暗号化
+
+# mono_number_... -> 一つの数字で暗号作成
 def mono_number_locker(plain, key):
     plain_array = list(map(int, str(plain)))
     cipher = ""
