@@ -9,12 +9,16 @@ def is_kind(kind):
 def get_locker(method, plain, key):
     if method == "mono number":
         return cn.mono_number_locker(plain, int(key))
+    elif method == "stairs number":
+        return cn.stairs_number_locker(plain, int(key))
     else:
         return "method not exist"
 
 def get_unlocker(method, cipher, key):
     if method == "mono number":
         return cn.mono_number_unlocker(cipher, int(key))
+    elif method == "stairs number":
+        return cn.stairs_number_unlocker(cipher, int(key))
     else:
         return "method not exist"
 
@@ -30,7 +34,8 @@ def get_answer(kind, method, text, key):
 CHOOSE_MESSAGE = (
     "\n"
     "choose kind of method\n"
-    "- mono number"
+    "- mono number\n"
+    "- stairs number"
 )
 
 print("lock or unlock ?")
