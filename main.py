@@ -6,7 +6,7 @@ def get_locker(method, plain, key):
     elif method == "stairs number":
         return cn.stairs_number_locker(plain, key)
     else:
-        return ""
+        return None
 
 def get_unlocker(method, cipher, key):
     if method == "mono number":
@@ -14,10 +14,25 @@ def get_unlocker(method, cipher, key):
     elif method == "stairs number":
         return cn.stairs_number_unlocker(cipher, key)
     else:
-        return "method not exist"
+        return None
 
 def is_kind(kind):
     if kind == "lock" or kind == "unlock":
+        return True
+    return False
+
+def is_locker(method):
+    if get_locker(method, "", 0) is None:
+        return False
+    return True
+
+def is_unlocker(method):
+    if get_unlocker(method, "", 0) is None:
+        return False
+    return True
+
+def is_method(method):
+    if is_locker(method) or is_unlocker(method):
         return True
     return False
 
@@ -45,11 +60,18 @@ if not is_kind(kind):
 
 print(CHOOSE_MESSAGE)
 method = input()
+if not is_locker(method):
+    print("\nmethod not exist")
+    exit()
 
 print("\nplease enter your text")
 text = input()
 
 print("\nplease enter your key")
-key = int(input())
+try:
+    key = int(input())
+except ValueError:
+    print("\nanswer the number")
+    exit()
 
 print("\n" + get_answer(kind, method, text, key))
