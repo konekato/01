@@ -1,10 +1,50 @@
 from cryptographism import number as cn
 
-# 以下デバッグ用
-plain = input()
-key = int(input())
+# 不要かも
+def is_kind(kind):
+    if kind == "lock" or kind == "unlock":
+        return True
+    return False
 
-cipher_str = cn.mono_number_locker(plain, key)
-print(cipher_str)
+def get_locker(method, plain, key):
+    if method == "mono number":
+        return cn.mono_number_locker(plain, int(key))
+    else:
+        return "method not exist"
 
-print(cn.mono_number_unlocker(int(cipher_str), key))
+def get_unlocker(method, cipher, key):
+    if method == "mono number":
+        return cn.mono_number_unlocker(cipher, int(key))
+    else:
+        return "method not exist"
+
+# 命名変更必要
+def get_answer(kind, method, text, key):
+    if kind == "lock":
+        return get_locker(method, text, key)
+    elif kind == "unlock":
+        return get_unlocker(method, text, key)
+    else:
+        return ""
+
+CHOOSE_MESSAGE = (
+    "\n"
+    "choose kind of method\n"
+    "- mono number"
+)
+
+print("lock or unlock ?")
+kind = input()
+if not is_kind(kind):
+    print("please answer 'lock' or 'unlock'\n")
+
+print(CHOOSE_MESSAGE)
+method = input()
+
+print("\nplease enter your text")
+text = input()
+
+print("\nplease enter your key")
+key = input()
+
+print("\n" + get_answer(kind, method, text, key))
