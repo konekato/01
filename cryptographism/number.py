@@ -42,3 +42,20 @@ def stairs_number_locker(plain, key):
             key = 0
 
     return cipher
+
+# stairs_number_locker() の複合
+def stairs_number_unlocker(cipher, key):
+    cipher_array = list(map(int, str(cipher)))
+    plain = ""
+
+    for c in cipher_array:
+        plain_num = c + key
+        if plain_num > 9:
+            plain_num -= 10
+        plain += str(plain_num)
+
+        key += 1
+        if key > 9:
+            key = 0
+
+    return plain
