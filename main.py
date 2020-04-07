@@ -1,26 +1,25 @@
 from cryptographism import number as cn
 
-# 不要かも
+def get_locker(method, plain, key):
+    if method == "mono number":
+        return cn.mono_number_locker(plain, key)
+    elif method == "stairs number":
+        return cn.stairs_number_locker(plain, key)
+    else:
+        return ""
+
+def get_unlocker(method, cipher, key):
+    if method == "mono number":
+        return cn.mono_number_unlocker(cipher, key)
+    elif method == "stairs number":
+        return cn.stairs_number_unlocker(cipher, key)
+    else:
+        return "method not exist"
+
 def is_kind(kind):
     if kind == "lock" or kind == "unlock":
         return True
     return False
-
-def get_locker(method, plain, key):
-    if method == "mono number":
-        return cn.mono_number_locker(plain, int(key))
-    elif method == "stairs number":
-        return cn.stairs_number_locker(plain, int(key))
-    else:
-        return "method not exist"
-
-def get_unlocker(method, cipher, key):
-    if method == "mono number":
-        return cn.mono_number_unlocker(cipher, int(key))
-    elif method == "stairs number":
-        return cn.stairs_number_unlocker(cipher, int(key))
-    else:
-        return "method not exist"
 
 # 命名変更必要
 def get_answer(kind, method, text, key):
@@ -51,6 +50,6 @@ print("\nplease enter your text")
 text = input()
 
 print("\nplease enter your key")
-key = input()
+key = int(input())
 
 print("\n" + get_answer(kind, method, text, key))
