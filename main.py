@@ -41,7 +41,8 @@ CHOOSE_MESSAGE = (
 print("lock or unlock ?")
 kind = input()
 if not is_kind(kind):
-    print("please answer 'lock' or 'unlock'\n")
+    print("\nplease answer 'lock' or 'unlock'")
+    exit()
 
 print(CHOOSE_MESSAGE)
 method = input()
