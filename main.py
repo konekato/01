@@ -5,6 +5,8 @@ def get_locker(method, plain, key):
         return cn.mono_number_locker(plain, key)
     elif method == "stairs number":
         return cn.stairs_number_locker(plain, key)
+    elif method == "repetitive number":
+        return cn.repetitive_number_locker(plain, key)
     else:
         return None
 
@@ -13,6 +15,8 @@ def get_unlocker(method, cipher, key):
         return cn.mono_number_unlocker(cipher, key)
     elif method == "stairs number":
         return cn.stairs_number_unlocker(cipher, key)
+    elif method == "repetitive number":
+        return cn.repetitive_number_unlocker(cipher, key)
     else:
         return None
 
@@ -49,7 +53,8 @@ CHOOSE_MESSAGE = (
     "\n"
     "choose kind of method\n"
     "- mono number\n"
-    "- stairs number"
+    "- stairs number\n"
+    "- repetitive number"
 )
 
 print("lock or unlock ?")
