@@ -77,3 +77,21 @@ def repetitive_number_locker(plain, key):
         print(key_array[i])
 
     return cipher
+
+# repetitive_number_locker() の複合
+def repetitive_number_unlocker(cipher, key):
+    cipher_array = list(map(int, str(cipher)))
+    key_array = list(map(int, str(key)))
+    plain = ""
+
+    i = 0
+    for c in cipher_array:
+        plain_num = c + key_array[i]
+        if plain_num > 9:
+            plain_num -= 10
+        plain += str(plain_num)
+
+        i = i+1 if i < (len(key_array) - 1) else 0
+        print(key_array[i])
+
+    return plain
