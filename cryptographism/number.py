@@ -59,3 +59,21 @@ def stairs_number_unlocker(cipher, key):
             key = 0
 
     return plain
+
+# repetitive_number_... -> 反復数で暗号作成 （入力：key=12 -> 121212.. が引かれる）
+def repetitive_number_locker(plain, key):
+    plain_array = list(map(int, str(plain)))
+    key_array = list(map(int, str(key)))
+    cipher = ""
+
+    i = 0
+    for p in plain_array:
+        cipher_num = p - key_array[i]
+        if cipher_num < 0:
+            cipher_num += 10
+
+        cipher += str(cipher_num)
+        i = i+1 if i < (len(key_array) - 1) else 0
+        print(key_array[i])
+
+    return cipher
