@@ -71,10 +71,9 @@ def repetitive_number_locker(plain, key):
         cipher_num = p - key_array[i]
         if cipher_num < 0:
             cipher_num += 10
-
         cipher += str(cipher_num)
+
         i = i+1 if i < (len(key_array) - 1) else 0
-        print(key_array[i])
 
     return cipher
 
@@ -92,6 +91,5 @@ def repetitive_number_unlocker(cipher, key):
         plain += str(plain_num)
 
         i = i+1 if i < (len(key_array) - 1) else 0
-        print(key_array[i])
 
     return plain
