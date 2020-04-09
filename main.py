@@ -51,32 +51,32 @@ def get_answer(kind, method, text, key):
 
 CHOOSE_MESSAGE = (
     "\n"
-    "choose kind of method\n"
+    " choose kind of method\n"
     "- mono number\n"
     "- stairs number\n"
     "- repetitive number"
 )
 
-print("lock or unlock ?")
+print(" lock or unlock ?")
 kind = input()
 if not is_kind(kind):
-    print("\nplease answer 'lock' or 'unlock'")
+    print("\n please answer 'lock' or 'unlock'")
     exit()
 
 print(CHOOSE_MESSAGE)
 method = input()
 if not is_locker(method):
-    print("\nmethod not exist")
+    print("\n method not exist")
     exit()
 
-print("\nplease enter your text")
+print("\n please enter your text")
 text = input()
 
-print("\nplease enter your key")
+print("\n please enter your key")
 try:
     key = int(input())
 except ValueError:
-    print("\nanswer the number")
+    print("\n answer a number")
     exit()
 
 print("\n" + get_answer(kind, method, text, key))
